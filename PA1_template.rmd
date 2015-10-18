@@ -34,7 +34,7 @@ For this part of the assignment, you can ignore the missing values in the datase
 
 The code for Calculating the total number of steps taken per day and making a histogram of the total number of steps taken each day is shown below.
 
-```{r, fig.height=4}
+```{r, fig.height=4, echo=TRUE}
 library(ggplot2)
 
 data_steps = d$steps
