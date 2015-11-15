@@ -1,5 +1,5 @@
 # Peer Assessment 1 for Reproducible Research
-10/16/2015
+11/15/2015
 
 # Introduction
 It is now possible to collect a large amount of data about personal movement using activity monitoring devices such as a Fitbit, Nike Fuelband, or Jawbone Up. These type of devices are part of the "quantified self" movement - a group of enthusiasts who take measurements about themselves regularly to improve their health, to find patterns in their behavior, or because they are tech geeks. But these data remain under-utilized both because the raw data are hard to obtain and there is a lack of statistical methods and software for processing and interpreting the data.
@@ -305,18 +305,22 @@ The following code shows the step for making the plot containing a time series p
 
 
 ```r
+par(mfrow=c(2,1))
+plot(new_data_interval_average_weekend$new_data_interval_weekend,
+    new_data_interval_average_weekend$new_data_steps_weekend,
+    type="l",
+    main = "weekend",
+    xlab = "Interval",  
+    ylab = "Number of steps",
+    col="red")
+
 plot(new_data_interval_average_weekday$new_data_interval_weekday,
      new_data_interval_average_weekday$new_data_steps_weekday,
      type = "l", 
-     main = "Time series plot comparison between weekdays and weekends", 
-     xlab = "The 5-minute interval",  
-     ylab = "Average number of steps averaged across all days",
+     main = "weekday", 
+     xlab = "Interval",  
+     ylab = "Number of steps",
      col="blue")
-lines(new_data_interval_average_weekend$new_data_interval_weekend,
-      new_data_interval_average_weekend$new_data_steps_weekend,
-      type="l",
-      col="red")
-legend("topleft",legend = c("weekdays", "weekends"), lty = c(1, 2), col = c("blue", "red"), bg = "white", lwd = 2)
 ```
 
 ![plot of chunk unnamed-chunk-16](figure/unnamed-chunk-16-1.png) 

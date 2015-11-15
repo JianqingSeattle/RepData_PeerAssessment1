@@ -1,5 +1,5 @@
 # Peer Assessment 1 for Reproducible Research
-10/16/2015
+11/15/2015
 
 # Introduction
 It is now possible to collect a large amount of data about personal movement using activity monitoring devices such as a Fitbit, Nike Fuelband, or Jawbone Up. These type of devices are part of the "quantified self" movement - a group of enthusiasts who take measurements about themselves regularly to improve their health, to find patterns in their behavior, or because they are tech geeks. But these data remain under-utilized both because the raw data are hard to obtain and there is a lack of statistical methods and software for processing and interpreting the data.
@@ -34,7 +34,7 @@ For this part of the assignment, you can ignore the missing values in the datase
 
 The code for Calculating the total number of steps taken per day and making a histogram of the total number of steps taken each day is shown below.
 
-```{r, fig.height=4, echo=TRUE}
+```{r, fig.height=4}
 library(ggplot2)
 
 data_steps = d$steps
@@ -211,18 +211,23 @@ new_data_interval_average_weekend = aggregate(new_data_steps_weekend ~ new_data_
 The following code shows the step for making the plot containing a time series plot of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis). 
 
 ```{r}
+par(mfrow=c(2,1))
+plot(new_data_interval_average_weekend$new_data_interval_weekend,
+    new_data_interval_average_weekend$new_data_steps_weekend,
+    type="l",
+    main = "weekend",
+    xlab = "Interval",  
+    ylab = "Number of steps",
+    col="red")
+
 plot(new_data_interval_average_weekday$new_data_interval_weekday,
      new_data_interval_average_weekday$new_data_steps_weekday,
      type = "l", 
-     main = "Time series plot comparison between weekdays and weekends", 
-     xlab = "The 5-minute interval",  
-     ylab = "Average number of steps averaged across all days",
+     main = "weekday", 
+     xlab = "Interval",  
+     ylab = "Number of steps",
      col="blue")
-lines(new_data_interval_average_weekend$new_data_interval_weekend,
-      new_data_interval_average_weekend$new_data_steps_weekend,
-      type="l",
-      col="red")
-legend("topleft",legend = c("weekdays", "weekends"), lty = c(1, 2), col = c("blue", "red"), bg = "white", lwd = 2)
+
 ```
 
 
